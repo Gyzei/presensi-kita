@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/notifiers.dart';
-import 'package:presensi_kita/views/widget_tree.dart';
+import 'package:presensi_kita/views/pages/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,10 +27,9 @@ class _MyAppState extends State<MyApp> {
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),
-          home: WidgetTree(),
+          home: WelcomePage(),
         );
       },
     );
   }
 }
-
