@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/views/widget_tree.dart';
-import 'package:presensi_kita/views/widgets/hero_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
@@ -36,8 +35,8 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                HeroWidget(title: widget.title),
-                SizedBox(height: 20.0),
+                // HeroWidget(title: widget.title),
+                // SizedBox(height: 20.0),
                 TextField(
                   controller: controllerUN,
                   decoration: InputDecoration(
@@ -88,13 +87,14 @@ class _LoginPageState extends State<LoginPage> {
 
   void onLoginPressed() {
     if (confirmedUN == controllerUN.text && confirmedPW == controllerPW.text) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) {
             return WidgetTree();
           },
         ),
+        (route) => false,
       );
     }
   }
