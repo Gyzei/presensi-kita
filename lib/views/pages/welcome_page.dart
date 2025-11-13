@@ -25,6 +25,26 @@ class WelcomePage extends StatelessWidget {
                   ),
                 );
               },
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.green[800],
+                minimumSize: Size(double.infinity, 32.0),
+              ),
+              child: Text('Get Started'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return WidgetTree();
+                    },
+                  ),
+                );
+              },
+              style: TextButton.styleFrom(
+                minimumSize: Size(double.infinity, 32.0),
+              ),
               child: Text('Login'),
             ),
           ],
