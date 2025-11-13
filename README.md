@@ -1,3 +1,3 @@
-# presensi_kita
+# Presensi Kita
 
-A new Flutter project.
+Aplikasi Presensi Kita.

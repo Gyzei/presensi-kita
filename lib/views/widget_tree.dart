@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/notifiers.dart';
+import 'package:presensi_kita/views/pages/settings_page.dart';
 
+import 'widgets/navbar_widget.dart';
 import 'pages/home_page.dart';
 import 'pages/survey_page.dart';
 import 'pages/profile_page.dart';
-import 'widgets/navbar_widget.dart';
 
-List<Widget> pages = [
-  HomePage(),
-  SurveyPage(),
-  ProfilePage(),
-];
+List<Widget> pages = [HomePage(), SurveyPage(), ProfilePage()];
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
@@ -20,6 +17,10 @@ class WidgetTree extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Presensi Kita'),
+        titleTextStyle: TextStyle(fontSize: 14, color: Colors.black),
+        backgroundColor: Colors.white,
+        shadowColor: const Color.fromARGB(150, 0, 0, 0),
+        elevation: 1,
         actions: [
           IconButton(
             onPressed: () {
@@ -28,11 +29,22 @@ class WidgetTree extends StatelessWidget {
             icon: ValueListenableBuilder(
               valueListenable: isDarkModeNotifier,
               builder: (context, isDarkMode, child) {
-                return Icon(
-                  isDarkMode ? Icons.light_mode : Icons.dark_mode,
-                );
+                return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
               },
             ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SettingsPage(title: 'Settings');
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.settings),
           ),
         ],
       ),

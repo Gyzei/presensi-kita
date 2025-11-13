@@ -10,9 +10,10 @@ class NavbarWidget extends StatelessWidget {
       valueListenable: selectedPageNotifier,
       builder: (context, selectedPage, child) {
         return NavigationBar(
+          backgroundColor: Colors.white,
           destinations: [
             NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.newspaper_rounded), label: 'Survey'),
+            NavigationDestination(icon: Icon(Icons.article_rounded), label: 'Survey'),
             NavigationDestination(icon: Icon(Icons.person_rounded), label: 'Profile'),
           ],
           onDestinationSelected: (int value) {
