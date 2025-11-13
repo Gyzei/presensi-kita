@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/views/widgets/hero_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,7 +20,10 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text('Title'), Text('Lorem ipsum')],
+                  children: [
+                    Text('Title', style: KTextStyle.titleTealText),
+                    Text('Lorem ipsum.', style: KTextStyle.descriptionText),
+                  ],
                 ),
               ),
             ),
