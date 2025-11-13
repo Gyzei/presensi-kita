@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/views/pages/login_page.dart';
 import 'package:presensi_kita/views/widget_tree.dart';
-import 'package:presensi_kita/views/widgets/hero_widget.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -13,14 +13,13 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            HeroWidget(),
             FilledButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return WidgetTree();
+                      return LoginPage();
                     },
                   ),
                 );
