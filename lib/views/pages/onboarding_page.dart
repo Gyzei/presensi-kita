@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/views/pages/login_page.dart';
-import 'package:presensi_kita/views/pages/onboarding_page.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
-
+class OnboardingPage extends StatelessWidget {
+  const OnboardingPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -15,24 +15,12 @@ class WelcomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FilledButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return OnboardingPage();
-                        },
-                      ),
-                    );
-                  },
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.green[800],
-                    minimumSize: Size(double.infinity, 32.0),
-                  ),
-                  child: Text('Get Started'),
+                Text(
+                  'Lorem ipsum dolor si amet',
+                  style: KTextStyle.descriptionText,
+                  textAlign: TextAlign.justify,
                 ),
-                TextButton(
+                FilledButton(
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -43,11 +31,13 @@ class WelcomePage extends StatelessWidget {
                       ),
                     );
                   },
-                  style: FilledButton.styleFrom(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green[800],
                     minimumSize: Size(double.infinity, 32.0),
                   ),
-                  child: Text('Login'),
+                  child: Text('Next'),
                 ),
+                SizedBox(height: 64.0),
               ],
             ),
           ),
