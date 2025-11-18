@@ -19,7 +19,7 @@ class WidgetTree extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Presensi Kita'),
-        titleTextStyle: TextStyle(fontSize: 14, color: Colors.black),
+        titleTextStyle: TextStyle(fontSize: 14),
         backgroundColor: Colors.white,
         shadowColor: const Color.fromARGB(150, 0, 0, 0),
         elevation: 1,
