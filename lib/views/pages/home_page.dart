@@ -1,53 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
+import 'package:presensi_kita/views/pages/course_page.dart';
 import 'package:presensi_kita/views/widgets/container_widget.dart';
+import 'package:presensi_kita/views/widgets/hero_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<String> list = [
+      KValue.keyConcepts,
+      KValue.cleanUI,
+      KValue.fixBugs,
+      KValue.basicLayout,
+    ];
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // HeroWidget(title: 'Login'),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
-            ContainerWidget(
-              title: 'Basic Layout',
-              desc: 'Lorem ipsum dolor sit amet',
-            ),
+            HeroWidget(title: 'Home', nextPage: CoursePage()),
+            ...List.generate(list.length, (index) {
+              return ContainerWidget(
+                title: list.elementAt(index),
+                desc: 'Lorem ipsum dolor sit amet',
+              );
+            }),
           ],
         ),
       ),
