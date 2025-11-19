@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
+import 'package:presensi_kita/views/pages/settings_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'widgets/navbar_widget.dart';
 import 'pages/home_page.dart';
 import 'pages/survey_page.dart';
 import 'pages/profile_page.dart';
-import 'widgets/navbar_widget.dart';
 
-List<Widget> pages = [
-  HomePage(),
-  SurveyPage(),
-  ProfilePage(),
-];
+List<Widget> pages = [HomePage(), SurveyPage(), ProfilePage()];
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
@@ -20,19 +19,38 @@ class WidgetTree extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Presensi Kita'),
+        // titleTextStyle: TextStyle(fontSize: 14),
+        elevation: 1,
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              await prefs.setBool(
+                KConstants.themeModeKey,
+                isDarkModeNotifier.value,
+              );
             },
             icon: ValueListenableBuilder(
               valueListenable: isDarkModeNotifier,
               builder: (context, isDarkMode, child) {
-                return Icon(
-                  isDarkMode ? Icons.light_mode : Icons.dark_mode,
-                );
+                return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
               },
             ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SettingsPage(title: 'Settings');
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.settings),
           ),
         ],
       ),

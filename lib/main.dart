@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
-import 'package:presensi_kita/views/widget_tree.dart';
+import 'package:presensi_kita/views/pages/welcome_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +17,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() {
+    initThemeMode();
+    super.initState();
+  }
+
+  void initThemeMode() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool? repeat = prefs.getBool(KConstants.themeModeKey);
+    isDarkModeNotifier.value = repeat ?? false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: isDarkModeNotifier,
@@ -27,10 +41,9 @@ class _MyAppState extends State<MyApp> {
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),
-          home: WidgetTree(),
+          home: WelcomePage(),
         );
       },
     );
   }
 }
-
