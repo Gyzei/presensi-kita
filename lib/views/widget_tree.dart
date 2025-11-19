@@ -17,6 +17,7 @@ class WidgetTree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = isDarkModeNotifier.value;
     return Scaffold(
       endDrawer: ValueListenableBuilder(
         valueListenable: selectedPageNotifier,
@@ -47,37 +48,39 @@ class WidgetTree extends StatelessWidget {
         ),
         // titleTextStyle: TextStyle(fontSize: 14),
         elevation: 1,
+        backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
+        shadowColor: Colors.grey,
         actions: [
-          // IconButton(
-          //   onPressed: () async {
-          //     isDarkModeNotifier.value = !isDarkModeNotifier.value;
-          //     final SharedPreferences prefs =
-          //         await SharedPreferences.getInstance();
-          //     await prefs.setBool(
-          //       KConstants.themeModeKey,
-          //       isDarkModeNotifier.value,
-          //     );
-          //   },
-          //   icon: ValueListenableBuilder(
-          //     valueListenable: isDarkModeNotifier,
-          //     builder: (context, isDarkMode, child) {
-          //       return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
-          //     },
-          //   ),
-          // ),
-          // IconButton(
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) {
-          //           return SettingsPage(title: 'Settings');
-          //         },
-          //       ),
-          //     );
-          //   },
-          //   icon: Icon(Icons.settings),
-          // ),
+          IconButton(
+            onPressed: () async {
+              isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              await prefs.setBool(
+                KConstants.themeModeKey,
+                isDarkModeNotifier.value,
+              );
+            },
+            icon: ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
+              },
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SettingsPage(title: 'Settings');
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.settings),
+          ),
           ValueListenableBuilder(
             valueListenable: selectedPageNotifier,
             builder: (context, selectedPage, child) {

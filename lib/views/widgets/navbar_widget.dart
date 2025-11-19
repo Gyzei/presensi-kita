@@ -6,11 +6,12 @@ class NavbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = isDarkModeNotifier.value;
     return ValueListenableBuilder(
       valueListenable: selectedPageNotifier,
       builder: (context, selectedPage, child) {
         return NavigationBar(
-          // backgroundColor: Colors.white,
+          backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
           destinations: [
             NavigationDestination(
               icon: Icon(Icons.home_rounded),

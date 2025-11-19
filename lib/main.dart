@@ -37,7 +37,12 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.yellow,
+              seedColor: Color.fromRGBO(
+                KColorScheme.backgroundColor['r'],
+                KColorScheme.backgroundColor['g'],
+                KColorScheme.backgroundColor['b'],
+                KColorScheme.backgroundColor['o'],
+              ),
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),

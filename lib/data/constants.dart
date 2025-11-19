@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+class KColorScheme {
+  static const Map<String, dynamic> backgroundColor = {
+    'r': 248,
+    'g': 244,
+    'b': 232,
+    'o': 1.0,
+  };
+}
+
 class KConstants {
   static const String themeModeKey = 'themeModeKey';
 }
