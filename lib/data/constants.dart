@@ -14,8 +14,8 @@ class KTextStyle {
 }
 
 class KValue {
-  static const String basicLayout = 'Basic Layout';
-  static const String cleanUI = 'Clean UI';
-  static const String fixBugs = 'Fix Bugs';
-  static const String keyConcepts = 'Key Concepts';
+  static const String basicLayout = 'MK 1';
+  static const String cleanUI = 'MK 2';
+  static const String fixBugs = 'MK 3';
+  static const String keyConcepts = 'MK 4';
 }
