@@ -18,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controllerUN.dispose();
     controllerPW.dispose();
     super.dispose();
@@ -32,52 +31,59 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // HeroWidget(title: widget.title),
-                // SizedBox(height: 20.0),
-                TextField(
-                  controller: controllerUN,
-                  decoration: InputDecoration(
-                    hintText: 'Username',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14.0),
-                    ),
+            child: LayoutBuilder(
+              builder: (context, BoxConstraints constraints) {
+                return FractionallySizedBox(
+                  widthFactor: constraints.maxWidth > 500 ? 0.5 : 1.0,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // HeroWidget(title: widget.title),
+                      // SizedBox(height: 20.0),
+                      TextField(
+                        controller: controllerUN,
+                        decoration: InputDecoration(
+                          hintText: 'Username',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(14.0),
+                          ),
+                        ),
+                        onEditingComplete: () {
+                          setState(() {});
+                        },
+                      ),
+                      SizedBox(height: 10.0),
+                      TextField(
+                        controller: controllerPW,
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(14.0),
+                          ),
+                        ),
+                        onEditingComplete: () {
+                          setState(() {});
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      FilledButton(
+                        onPressed: () {
+                          onLoginPressed();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green[800],
+                          minimumSize: Size(double.infinity, 32.0),
+                        ),
+                        child: Text(
+                          widget.title,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(height: 64.0),
+                    ],
                   ),
-                  onEditingComplete: () {
-                    setState(() {});
-                  },
-                ),
-                SizedBox(height: 10.0),
-                TextField(
-                  controller: controllerPW,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14.0),
-                    ),
-                  ),
-                  onEditingComplete: () {
-                    setState(() {});
-                  },
-                ),
-                SizedBox(height: 20.0),
-                ElevatedButton(
-                  onPressed: () {
-                    onLoginPressed();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green[800],
-                    minimumSize: Size(double.infinity, 32.0),
-                  ),
-                  child: Text(
-                    widget.title,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 64.0),
-              ],
+                );
+              },
             ),
           ),
         ),

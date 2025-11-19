@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/views/pages/expanded_flexible_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key, required this.title});
@@ -26,6 +27,19 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ExpandedFlexiblePage();
+                    },
+                  ),
+                );
+              },
+              child: Text('Show Expanded and whatever'),
+            ),
             ElevatedButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
