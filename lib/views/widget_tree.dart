@@ -18,22 +18,31 @@ class WidgetTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(),
+      endDrawer: ValueListenableBuilder(
+        valueListenable: selectedPageNotifier,
+        builder: (context, selectedPage, child) {
+          if (selectedPage == 0) {
+            return Drawer(child: DrawerHeader(child: Text('Notifications')));
+          } else {
+            return SizedBox.shrink();
+          }
+        },
+      ),
       appBar: AppBar(
         title: ValueListenableBuilder(
           valueListenable: selectedPageNotifier,
           builder: (context, selectedPage, child) {
-            Widget? appBarTitle;
             if (selectedPage == 0) {
-              appBarTitle = Text('Home');
+              return Text('Home');
             }
             if (selectedPage == 1) {
-              appBarTitle = Text('Survey');
+              return Text('Survey');
             }
             if (selectedPage == 2) {
-              appBarTitle = Text('Profile');
+              return Text('Profile');
+            } else {
+              return Text('Error');
             }
-            return appBarTitle!;
           },
         ),
         // titleTextStyle: TextStyle(fontSize: 14),
@@ -69,16 +78,31 @@ class WidgetTree extends StatelessWidget {
           //   },
           //   icon: Icon(Icons.settings),
           // ),
-          Builder(
-            builder: (context) {
-              return IconButton(
-                icon: Icon(Icons.notifications),
-                onPressed: () {
-                  Scaffold.of(context).openEndDrawer();
-                },
-              );
+          ValueListenableBuilder(
+            valueListenable: selectedPageNotifier,
+            builder: (context, selectedPage, child) {
+              if (selectedPage == 0) {
+                return IconButton(
+                  icon: Icon(Icons.notifications),
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                );
+              } else {
+                return SizedBox.shrink();
+              }
             },
           ),
+          // Builder(
+          //   builder: (context) {
+          //     return IconButton(
+          //       icon: Icon(Icons.notifications),
+          //       onPressed: () {
+          //         Scaffold.of(context).openEndDrawer();
+          //       },
+          //     );
+          //   },
+          // ),
         ],
       ),
       body: ValueListenableBuilder(
