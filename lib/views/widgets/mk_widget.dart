@@ -76,19 +76,41 @@ class MKWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 32),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Hari / 00:00 - 00:00',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
+                          ListTile(
+                            minTileHeight: 0,
+                            contentPadding: EdgeInsets.all(0),
+                            minLeadingWidth: 4,
+                            leading: Icon(
+                              Icons.hourglass_bottom_rounded,
+                              size: 20,
+                            ),
+                            title: Text(
+                              'Hari / 00:00 - 00:00',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
-                          Text('Ruang', style: TextStyle(fontSize: 14)),
+                          ListTile(
+                            minTileHeight: 0,
+                            contentPadding: EdgeInsets.all(0),
+                            minLeadingWidth: 4,
+                            leading: Icon(Icons.chair_rounded, size: 20),
+                            title: Text(
+                              'Ruang',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
