@@ -13,8 +13,12 @@ class NavbarWidget extends StatelessWidget {
       builder: (context, selectedPage, child) {
         return NavigationBar(
           elevation: 1,
+          height: 64,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+          shadowColor: Color.fromARGB(64, 158, 158, 158),
           indicatorColor: Colors.transparent,
           backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
+          surfaceTintColor: isDarkMode == true ? Colors.black : Colors.white,
           destinations: [
             NavigationDestination(
               icon: Icon(
@@ -22,7 +26,7 @@ class NavbarWidget extends StatelessWidget {
                 size: 28.0,
                 color: selectedPage == 0 ? KColors.accentColor : null,
               ),
-              label: '',
+              label: 'Home',
             ),
             NavigationDestination(
               icon: Icon(
@@ -31,7 +35,7 @@ class NavbarWidget extends StatelessWidget {
                 color: selectedPage == 1 ? KColors.accentColor : null,
               ),
 
-              label: '',
+              label: 'Survey',
             ),
             NavigationDestination(
               icon: Icon(
@@ -39,7 +43,7 @@ class NavbarWidget extends StatelessWidget {
                 size: 28.0,
                 color: selectedPage == 2 ? KColors.accentColor : null,
               ),
-              label: '',
+              label: 'Profile',
             ),
           ],
           onDestinationSelected: (int value) {

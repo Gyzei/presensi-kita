@@ -22,7 +22,40 @@ class WidgetTree extends StatelessWidget {
         valueListenable: selectedPageNotifier,
         builder: (context, selectedPage, child) {
           if (selectedPage == 0) {
-            return Drawer(child: DrawerHeader(child: Text('Notifications')));
+            return Drawer(
+              backgroundColor: isDarkMode == true
+                  ? Colors.grey[850]
+                  : Colors.white,
+              child: SafeArea(
+                child: Padding(
+                  padding: EdgeInsetsGeometry.fromLTRB(16, 32, 16, 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(color: Colors.amber),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Notifications',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Lorem ipsum', style: TextStyle(fontSize: 18)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
           } else {
             return SizedBox.shrink();
           }
@@ -46,7 +79,7 @@ class WidgetTree extends StatelessWidget {
           },
         ),
         // titleTextStyle: TextStyle(fontSize: 14),
-        elevation: 0.5,
+        elevation: 1,
         surfaceTintColor: isDarkMode == true ? Colors.black : Colors.white,
         backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
         shadowColor: const Color.fromARGB(64, 158, 158, 158),
