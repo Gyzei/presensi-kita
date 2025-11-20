@@ -5,14 +5,6 @@ import 'package:presensi_kita/data/notifiers.dart';
 class SurveyWidget extends StatelessWidget {
   const SurveyWidget({super.key});
 
-  final String mataKuliah = 'Mata Kuliah';
-  final String dosen = 'Nama Dosen';
-  final String ruang = 'Ruang';
-  final String kelas = 'Kelas';
-  final String day = 'Hari';
-  final String time = '00:00 - 00:00';
-  final String status = 'Status Kelas';
-
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = isDarkModeNotifier.value;
@@ -39,74 +31,53 @@ class SurveyWidget extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            mataKuliah,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Text(
-                            dosen,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Container(
-                        color: KColors.accentColor,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            vertical: 4.0,
-                          ),
-                          child: Text(
-                            kelas,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Survey Title',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
-                      ),
+                        Text(
+                          'Subtittle',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 24),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
+                          Wrap(
                             children: [
                               Text(
-                                day,
+                                'Tanggal dimulai',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
                               Text(
-                                ' / ',
+                                ' - ',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
                               Text(
-                                time,
+                                'Tanggal Selesai',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
@@ -114,7 +85,6 @@ class SurveyWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Text(ruang, style: TextStyle(fontSize: 14)),
                         ],
                       ),
                     ),
@@ -126,11 +96,11 @@ class SurveyWidget extends StatelessWidget {
                             color: KColors.accentColor,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
+                                horizontal: 16.0,
                                 vertical: 4.0,
                               ),
                               child: Text(
-                                status,
+                                'Status Survey',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
