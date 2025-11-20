@@ -21,8 +21,81 @@ class HomePage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 2.0),
+              child: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Wrap(
+                          children: [
+                            Text(
+                              'Selamat Pagi !!',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Wrap(
+                                children: [
+                                  Text(
+                                    'Egy',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Wrap(
+                              children: [
+                                Text(
+                                  '2023583020006',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(vertical: 2.0),
+              child: Card(
+                // color: isDarkMode == true ? Colors.black : Colors.white,
+                color: Colors.white,
+                child: Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text('Lorem Ipsum')],
+                  ),
+                ),
+              ),
+            ),
             // HeroWidget(title: 'Home', nextPage: CoursePage()),
-            SizedBox(height: 4.0),
             ...List.generate(list.length, (index) {
               return ContainerWidget(
                 title: list.elementAt(index),

@@ -17,7 +17,7 @@ class ContainerWidget extends StatelessWidget {
       child: Card(
         color: isDarkMode == true ? Colors.black : Colors.white,
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
