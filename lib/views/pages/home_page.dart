@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/constants.dart';
-import 'package:presensi_kita/views/pages/course_page.dart';
-import 'package:presensi_kita/views/widgets/container_widget.dart';
 import 'package:presensi_kita/views/widgets/hero_widget.dart';
+import 'package:presensi_kita/views/widgets/mk_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<String> list = [
+    List<String> mklist = [
+      KValue.keyConcepts,
+      KValue.cleanUI,
+      KValue.fixBugs,
+      KValue.basicLayout,
+    ];
+    List<String> mklist2 = [
       KValue.keyConcepts,
       KValue.cleanUI,
       KValue.fixBugs,
@@ -34,7 +39,10 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               'Selamat Pagi !!',
-                              style: TextStyle(fontSize: 24),
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
@@ -52,7 +60,7 @@ class HomePage extends StatelessWidget {
                                     'Egy',
                                     style: TextStyle(
                                       fontSize: 24,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ],
@@ -67,7 +75,10 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Text(
                                   '2023583020006',
-                                  style: TextStyle(fontSize: 14),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ],
                             ),
@@ -81,7 +92,6 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              color: Colors.white,
               padding: EdgeInsets.symmetric(vertical: 2.0),
               child: Card(
                 // color: isDarkMode == true ? Colors.black : Colors.white,
@@ -95,13 +105,16 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            // HeroWidget(title: 'Home', nextPage: CoursePage()),
-            ...List.generate(list.length, (index) {
-              return ContainerWidget(
-                title: list.elementAt(index),
-                desc: 'Lorem ipsum dolor sit amet',
-              );
+            ...List.generate(4, (index) {
+              return MKWidget();
             }),
+            // HeroWidget(title: 'Home', nextPage: CoursePage()),
+            // ...List.generate(mklist2.length, (index) {
+            //   return ContainerWidget(
+            //     title: mklist.elementAt(index),
+            //     desc: 'Lorem ipsum dolor sit amet',
+            //   );
+            // }),
           ],
         ),
       ),
