@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
 
-class MKWidget extends StatelessWidget {
-  const MKWidget({super.key});
+class SurveyWidget extends StatelessWidget {
+  const SurveyWidget({super.key});
+
+  final String mataKuliah = 'Mata Kuliah';
+  final String dosen = 'Nama Dosen';
+  final String ruang = 'Ruang';
+  final String kelas = 'Kelas';
+  final String day = 'Hari';
+  final String time = '00:00 - 00:00';
+  final String status = 'Status Kelas';
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +44,14 @@ class MKWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Matakuliah',
+                            mataKuliah,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           Text(
-                            'Nama Dosen',
+                            dosen,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -62,7 +70,7 @@ class MKWidget extends StatelessWidget {
                             vertical: 4.0,
                           ),
                           child: Text(
-                            'Kelas',
+                            kelas,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
@@ -74,21 +82,39 @@ class MKWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 32),
+                SizedBox(height: 30),
                 Row(
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Hari / 00:00 - 00:00',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                day,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                ' / ',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                time,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text('Ruang', style: TextStyle(fontSize: 14)),
+                          Text(ruang, style: TextStyle(fontSize: 14)),
                         ],
                       ),
                     ),
@@ -100,11 +126,11 @@ class MKWidget extends StatelessWidget {
                             color: KColors.accentColor,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
+                                horizontal: 8.0,
                                 vertical: 4.0,
                               ),
                               child: Text(
-                                'Status Kelas',
+                                status,
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,

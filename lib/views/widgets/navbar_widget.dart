@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
 
 class NavbarWidget extends StatelessWidget {
@@ -11,19 +12,34 @@ class NavbarWidget extends StatelessWidget {
       valueListenable: selectedPageNotifier,
       builder: (context, selectedPage, child) {
         return NavigationBar(
+          elevation: 1,
+          indicatorColor: Colors.transparent,
           backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
           destinations: [
             NavigationDestination(
-              icon: Icon(Icons.home_rounded),
-              label: 'Home',
+              icon: Icon(
+                Icons.home_rounded,
+                size: 28.0,
+                color: selectedPage == 0 ? KColors.accentColor : null,
+              ),
+              label: '',
             ),
             NavigationDestination(
-              icon: Icon(Icons.article_rounded),
-              label: 'Survey',
+              icon: Icon(
+                Icons.article_rounded,
+                size: 28.0,
+                color: selectedPage == 1 ? KColors.accentColor : null,
+              ),
+
+              label: '',
             ),
             NavigationDestination(
-              icon: Icon(Icons.person_rounded),
-              label: 'Profile',
+              icon: Icon(
+                Icons.person_rounded,
+                size: 28.0,
+                color: selectedPage == 2 ? KColors.accentColor : null,
+              ),
+              label: '',
             ),
           ],
           onDestinationSelected: (int value) {

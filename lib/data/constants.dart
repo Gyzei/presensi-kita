@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
-class KColorScheme {
-  static const Map<String, dynamic> backgroundColor = {
-    'r': 248,
-    'g': 244,
-    'b': 232,
-    'o': 1.0,
-  };
+class KColors {
+  static const Color backgroundColor = Color.fromRGBO(248, 244, 232, 1);
+  static const Color accentColor = Color.fromRGBO(213, 160, 7, 1);
 }
 
 class KConstants {
@@ -14,6 +10,11 @@ class KConstants {
 }
 
 class KTextStyle {
+  static const TextStyle appBarTitle = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w500,
+  );
+
   static const TextStyle titleTealText = TextStyle(
     color: Colors.teal,
     fontSize: 18,

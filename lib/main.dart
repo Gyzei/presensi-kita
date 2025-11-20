@@ -36,14 +36,10 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            textTheme: TextTheme(labelMedium: TextStyle(fontSize: 12.0)),
             fontFamily: 'Monstserrat', // font
             colorScheme: ColorScheme.fromSeed(
-              seedColor: Color.fromRGBO(
-                KColorScheme.backgroundColor['r'],
-                KColorScheme.backgroundColor['g'],
-                KColorScheme.backgroundColor['b'],
-                KColorScheme.backgroundColor['o'],
-              ),
+              seedColor: KColors.backgroundColor,
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
 import 'package:presensi_kita/views/pages/settings_page.dart';
@@ -34,53 +33,24 @@ class WidgetTree extends StatelessWidget {
           valueListenable: selectedPageNotifier,
           builder: (context, selectedPage, child) {
             if (selectedPage == 0) {
-              return Text('Home');
+              return Text('Home', style: KTextStyle.appBarTitle);
             }
             if (selectedPage == 1) {
-              return Text('Survey');
+              return Text('Survey', style: KTextStyle.appBarTitle);
             }
             if (selectedPage == 2) {
-              return Text('Profile');
+              return Text('Profile', style: KTextStyle.appBarTitle);
             } else {
-              return Text('Error');
+              return Text('Error', style: KTextStyle.appBarTitle);
             }
           },
         ),
         // titleTextStyle: TextStyle(fontSize: 14),
-        elevation: 1,
+        elevation: 0.5,
+        surfaceTintColor: isDarkMode == true ? Colors.black : Colors.white,
         backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
-        shadowColor: Colors.grey,
+        shadowColor: const Color.fromARGB(64, 158, 158, 158),
         actions: [
-          IconButton(
-            onPressed: () async {
-              isDarkModeNotifier.value = !isDarkModeNotifier.value;
-              final SharedPreferences prefs =
-                  await SharedPreferences.getInstance();
-              await prefs.setBool(
-                KConstants.themeModeKey,
-                isDarkModeNotifier.value,
-              );
-            },
-            icon: ValueListenableBuilder(
-              valueListenable: isDarkModeNotifier,
-              builder: (context, isDarkMode, child) {
-                return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
-              },
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SettingsPage(title: 'Settings');
-                  },
-                ),
-              );
-            },
-            icon: Icon(Icons.settings),
-          ),
           ValueListenableBuilder(
             valueListenable: selectedPageNotifier,
             builder: (context, selectedPage, child) {
@@ -90,6 +60,44 @@ class WidgetTree extends StatelessWidget {
                   onPressed: () {
                     Scaffold.of(context).openEndDrawer();
                   },
+                );
+              }
+              if (selectedPage == 2) {
+                return Row(
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        isDarkModeNotifier.value = !isDarkModeNotifier.value;
+                        final SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setBool(
+                          KConstants.themeModeKey,
+                          isDarkModeNotifier.value,
+                        );
+                      },
+                      icon: ValueListenableBuilder(
+                        valueListenable: isDarkModeNotifier,
+                        builder: (context, isDarkMode, child) {
+                          return Icon(
+                            isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                          );
+                        },
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return SettingsPage(title: 'Settings');
+                            },
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.settings),
+                    ),
+                  ],
                 );
               } else {
                 return SizedBox.shrink();
