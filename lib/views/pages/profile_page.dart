@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/notifiers.dart';
-import 'package:presensi_kita/views/pages/welcome_page.dart';
+import 'package:presensi_kita/views/pages/login_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return WelcomePage();
+                    return LoginPage();
                   },
                 ),
               );

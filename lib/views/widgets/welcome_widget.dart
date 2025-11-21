@@ -6,67 +6,29 @@ class WelcomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 2.0),
-      child: Padding(
-        padding: EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            Row(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Wrap(
-                  children: [
-                    Text(
-                      'Selamat Pagi !!',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+                Text(
+                  'Selamat Pagi !!',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'User',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  '2023583020000',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Wrap(
-                        children: [
-                          Text(
-                            'Egy',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Wrap(
-                      children: [
-                        Text(
-                          '2023583020006',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

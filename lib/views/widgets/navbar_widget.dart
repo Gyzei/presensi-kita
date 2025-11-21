@@ -22,7 +22,7 @@ class NavbarWidget extends StatelessWidget {
           destinations: [
             NavigationDestination(
               icon: Icon(
-                Icons.home_rounded,
+                selectedPage == 0 ? Icons.home_rounded : Icons.home_outlined,
                 size: 28.0,
                 color: selectedPage == 0 ? KColors.accentColor : null,
               ),
@@ -30,16 +30,17 @@ class NavbarWidget extends StatelessWidget {
             ),
             NavigationDestination(
               icon: Icon(
-                Icons.article_rounded,
+                selectedPage == 1
+                    ? Icons.article_rounded
+                    : Icons.article_outlined,
                 size: 28.0,
                 color: selectedPage == 1 ? KColors.accentColor : null,
               ),
-
               label: 'Survey',
             ),
             NavigationDestination(
               icon: Icon(
-                Icons.person_rounded,
+                selectedPage == 2 ? Icons.person_rounded : Icons.person_outline,
                 size: 28.0,
                 color: selectedPage == 2 ? KColors.accentColor : null,
               ),

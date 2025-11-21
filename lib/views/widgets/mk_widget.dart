@@ -86,10 +86,7 @@ class MKWidget extends StatelessWidget {
                             minTileHeight: 0,
                             contentPadding: EdgeInsets.all(0),
                             minLeadingWidth: 4,
-                            leading: Icon(
-                              Icons.hourglass_bottom_rounded,
-                              size: 20,
-                            ),
+                            leading: Icon(Icons.schedule_rounded, size: 20),
                             title: Text(
                               'Hari / 00:00 - 00:00',
                               style: TextStyle(
@@ -102,7 +99,10 @@ class MKWidget extends StatelessWidget {
                             minTileHeight: 0,
                             contentPadding: EdgeInsets.all(0),
                             minLeadingWidth: 4,
-                            leading: Icon(Icons.chair_rounded, size: 20),
+                            leading: Icon(
+                              Icons.door_front_door_rounded,
+                              size: 20,
+                            ),
                             title: Text(
                               'Ruang',
                               style: TextStyle(

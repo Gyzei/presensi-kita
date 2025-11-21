@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:presensi_kita/views/widget_tree.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-
-  final String title;
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -75,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                           minimumSize: Size(double.infinity, 32.0),
                         ),
                         child: Text(
-                          widget.title,
+                          'Login',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

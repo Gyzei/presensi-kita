@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/views/widgets/mk_filter_widget.dart';
 import 'package:presensi_kita/views/widgets/mk_widget.dart';
 import 'package:presensi_kita/views/widgets/welcome_widget.dart';
 
@@ -13,21 +14,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             WelcomeWidget(),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 2.0),
-              child: Card(
-                // color: isDarkMode == true ? Colors.black : Colors.white,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text('Lorem Ipsum')],
-                  ),
-                ),
-              ),
-            ),
+            MKFilterWidget(),
             ...List.generate(4, (index) {
               return MKWidget();
             }),
