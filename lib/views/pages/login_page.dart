@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
+import 'package:presensi_kita/data/notifiers.dart';
 import 'package:presensi_kita/views/widget_tree.dart';
 
 class LoginPage extends StatefulWidget {
@@ -23,6 +25,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = isDarkModeNotifier.value;
+
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -37,11 +41,37 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // HeroWidget(title: widget.title),
-                      // SizedBox(height: 20.0),
+                      Container(
+                        padding: EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Selamat Datang Kembali',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              'Masuk ke akun Anda',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
                       TextField(
                         controller: controllerUN,
                         decoration: InputDecoration(
                           hintText: 'Username',
+                          filled: true,
+                          fillColor: isDarkMode == true
+                              ? Colors.grey[850]
+                              : Colors.white,
+                          prefixIcon: Icon(Icons.person_rounded),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
@@ -50,11 +80,16 @@ class _LoginPageState extends State<LoginPage> {
                           setState(() {});
                         },
                       ),
-                      SizedBox(height: 10.0),
+                      SizedBox(height: 8.0),
                       TextField(
                         controller: controllerPW,
                         decoration: InputDecoration(
                           hintText: 'Password',
+                          filled: true,
+                          fillColor: isDarkMode == true
+                              ? Colors.grey[850]
+                              : Colors.white,
+                          prefixIcon: Icon(Icons.lock_rounded),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
@@ -69,12 +104,15 @@ class _LoginPageState extends State<LoginPage> {
                           onLoginPressed();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green[800],
-                          minimumSize: Size(double.infinity, 32.0),
+                          backgroundColor: KColors.accentColor,
+                          minimumSize: Size(double.infinity, 24.0),
                         ),
-                        child: Text(
-                          'Login',
-                          style: TextStyle(color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Text(
+                            'Login',
+                            style: TextStyle(color: Colors.white, fontSize: 24),
+                          ),
                         ),
                       ),
                       SizedBox(height: 64.0),
