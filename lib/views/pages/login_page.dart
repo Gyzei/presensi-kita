@@ -28,11 +28,13 @@ class _LoginPageState extends State<LoginPage> {
     bool isDarkMode = isDarkModeNotifier.value;
 
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: isDarkMode == true
+          ? KColors.darkBackgroundColor
+          : KColors.lightBackgroundColor,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(16.0),
             child: LayoutBuilder(
               builder: (context, BoxConstraints constraints) {
                 return FractionallySizedBox(
@@ -103,15 +105,19 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           onLoginPressed();
                         },
-                        style: ElevatedButton.styleFrom(
+                        style: FilledButton.styleFrom(
                           backgroundColor: KColors.accentColor,
                           minimumSize: Size(double.infinity, 24.0),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Text(
-                            'Login',
-                            style: TextStyle(color: Colors.white, fontSize: 24),
+                            'LOGIN',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),

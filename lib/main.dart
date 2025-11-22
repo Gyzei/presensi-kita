@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             textTheme: TextTheme(labelMedium: TextStyle(fontSize: 12.0)),
             fontFamily: 'Monstserrat', // font
             colorScheme: ColorScheme.fromSeed(
-              seedColor: KColors.backgroundColor,
+              seedColor: Colors.white,
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),

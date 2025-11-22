@@ -17,8 +17,12 @@ class NavbarWidget extends StatelessWidget {
           labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
           shadowColor: Color.fromARGB(64, 158, 158, 158),
           indicatorColor: Colors.transparent,
-          backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
-          surfaceTintColor: isDarkMode == true ? Colors.black : Colors.white,
+          backgroundColor: isDarkMode == true
+              ? KColors.darkNavigationColor
+              : KColors.lightNavigationColor,
+          surfaceTintColor: isDarkMode == true
+              ? KColors.darkNavigationColor
+              : KColors.lightNavigationColor,
           destinations: [
             NavigationDestination(
               icon: Icon(

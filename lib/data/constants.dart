@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:presensi_kita/data/notifiers.dart';
-
-bool isDarkMode = isDarkModeNotifier.value;
 
 class KColors {
-  static Color backgroundColor = isDarkMode == true
-      ? Color.fromRGBO(51, 51, 51, 1)
-      : Color.fromRGBO(248, 244, 232, 1);
-
-  static Color navigationColor = isDarkMode == true
-      ? Color.fromRGBO(74, 74, 74, 1)
-      : Color.fromRGBO(255, 255, 255, 1);
-
   static Color accentColor = Color.fromRGBO(213, 160, 7, 1);
+
+  static Color lightBackgroundColor = Color.fromRGBO(248, 244, 232, 1);
+  static Color darkBackgroundColor = Color.fromRGBO(51, 51, 51, 1);
+
+  static Color lightNavigationColor = Color.fromRGBO(255, 255, 255, 1);
+  static Color darkNavigationColor = Color.fromRGBO(74, 74, 74, 1);
 }
 
 class KConstants {

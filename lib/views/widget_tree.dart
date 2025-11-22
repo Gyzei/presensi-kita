@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
-import 'package:presensi_kita/views/pages/settings_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'widgets/navbar_widget.dart';
 import 'pages/home_page.dart';
@@ -18,6 +16,9 @@ class WidgetTree extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDarkMode = isDarkModeNotifier.value;
     return Scaffold(
+      backgroundColor: isDarkMode == true
+          ? KColors.darkBackgroundColor
+          : KColors.lightBackgroundColor,
       endDrawer: ValueListenableBuilder(
         valueListenable: selectedPageNotifier,
         builder: (context, selectedPage, child) {
@@ -78,10 +79,13 @@ class WidgetTree extends StatelessWidget {
             }
           },
         ),
-        // titleTextStyle: TextStyle(fontSize: 14),
         elevation: 1,
-        surfaceTintColor: isDarkMode == true ? Colors.black : Colors.white,
-        backgroundColor: isDarkMode == true ? Colors.black : Colors.white,
+        surfaceTintColor: isDarkMode == true
+            ? KColors.darkNavigationColor
+            : KColors.lightNavigationColor,
+        backgroundColor: isDarkMode == true
+            ? KColors.darkNavigationColor
+            : KColors.lightNavigationColor,
         shadowColor: const Color.fromARGB(64, 158, 158, 158),
         actions: [
           ValueListenableBuilder(
@@ -94,59 +98,11 @@ class WidgetTree extends StatelessWidget {
                     Scaffold.of(context).openEndDrawer();
                   },
                 );
-              }
-              if (selectedPage == 2) {
-                return Row(
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        isDarkModeNotifier.value = !isDarkModeNotifier.value;
-                        final SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        await prefs.setBool(
-                          KConstants.themeModeKey,
-                          isDarkModeNotifier.value,
-                        );
-                      },
-                      icon: ValueListenableBuilder(
-                        valueListenable: isDarkModeNotifier,
-                        builder: (context, isDarkMode, child) {
-                          return Icon(
-                            isDarkMode ? Icons.light_mode : Icons.dark_mode,
-                          );
-                        },
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return SettingsPage(title: 'Settings');
-                            },
-                          ),
-                        );
-                      },
-                      icon: Icon(Icons.settings),
-                    ),
-                  ],
-                );
               } else {
                 return SizedBox.shrink();
               }
             },
           ),
-          // Builder(
-          //   builder: (context) {
-          //     return IconButton(
-          //       icon: Icon(Icons.notifications),
-          //       onPressed: () {
-          //         Scaffold.of(context).openEndDrawer();
-          //       },
-          //     );
-          //   },
-          // ),
         ],
       ),
       body: ValueListenableBuilder(

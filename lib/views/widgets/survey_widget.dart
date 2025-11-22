@@ -22,7 +22,9 @@ class SurveyWidget extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 2.0),
         child: Card(
-          color: isDarkMode == true ? Colors.grey[850] : Colors.white,
+          color: isDarkMode == true
+              ? KColors.darkNavigationColor
+              : KColors.lightNavigationColor,
           child: Padding(
             padding: EdgeInsets.all(12.0),
             child: Column(
