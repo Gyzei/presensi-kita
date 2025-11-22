@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/views/pages/expanded_flexible_page.dart';
 
-class MatakuliahDetailPage extends StatefulWidget {
-  const MatakuliahDetailPage({super.key, required this.title});
+class DaftarPertemuanPage extends StatefulWidget {
+  const DaftarPertemuanPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MatakuliahDetailPage> createState() => _MatakuliahDetailPageState();
+  State<DaftarPertemuanPage> createState() => _DaftarPertemuanPageState();
 }
 
-class _MatakuliahDetailPageState extends State<MatakuliahDetailPage> {
+class _DaftarPertemuanPageState extends State<DaftarPertemuanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

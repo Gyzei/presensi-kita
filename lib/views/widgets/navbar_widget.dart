@@ -15,20 +15,25 @@ class NavbarWidget extends StatelessWidget {
           elevation: 1,
           height: 64,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-          shadowColor: Color.fromARGB(64, 158, 158, 158),
+          shadowColor: KColors.shadow,
           indicatorColor: Colors.transparent,
+          overlayColor: WidgetStateColor.transparent,
           backgroundColor: isDarkMode == true
-              ? KColors.darkNavigationColor
-              : KColors.lightNavigationColor,
+              ? KColors.darkNavigation
+              : KColors.lightNavigation,
           surfaceTintColor: isDarkMode == true
-              ? KColors.darkNavigationColor
-              : KColors.lightNavigationColor,
+              ? KColors.darkNavigation
+              : KColors.lightNavigation,
           destinations: [
             NavigationDestination(
               icon: Icon(
                 selectedPage == 0 ? Icons.home_rounded : Icons.home_outlined,
                 size: 28.0,
-                color: selectedPage == 0 ? KColors.accentColor : null,
+                color: selectedPage == 0 && isDarkModeNotifier.value == true
+                    ? KColors.darkOrangeAccent
+                    : selectedPage == 0 && isDarkModeNotifier.value == false
+                    ? KColors.lightOrangeAccent
+                    : null,
               ),
               label: 'Home',
             ),
@@ -38,7 +43,11 @@ class NavbarWidget extends StatelessWidget {
                     ? Icons.article_rounded
                     : Icons.article_outlined,
                 size: 28.0,
-                color: selectedPage == 1 ? KColors.accentColor : null,
+                color: selectedPage == 1 && isDarkModeNotifier.value == true
+                    ? KColors.darkOrangeAccent
+                    : selectedPage == 1 && isDarkModeNotifier.value == false
+                    ? KColors.lightOrangeAccent
+                    : null,
               ),
               label: 'Survey',
             ),
@@ -46,7 +55,11 @@ class NavbarWidget extends StatelessWidget {
               icon: Icon(
                 selectedPage == 2 ? Icons.person_rounded : Icons.person_outline,
                 size: 28.0,
-                color: selectedPage == 2 ? KColors.accentColor : null,
+                color: selectedPage == 2 && isDarkModeNotifier.value == true
+                    ? KColors.darkOrangeAccent
+                    : selectedPage == 2 && isDarkModeNotifier.value == false
+                    ? KColors.lightOrangeAccent
+                    : null,
               ),
               label: 'Profile',
             ),

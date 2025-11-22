@@ -18,8 +18,8 @@ class ProfileWidget extends StatelessWidget {
                 SizedBox(height: 64),
                 Card(
                   color: isDarkMode == true
-                      ? KColors.darkNavigationColor
-                      : KColors.lightNavigationColor,
+                      ? KColors.darkNavigation
+                      : KColors.lightNavigation,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
@@ -107,8 +107,8 @@ class ProfileWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: isDarkMode == true
-                      ? KColors.darkNavigationColor
-                      : KColors.lightNavigationColor,
+                      ? KColors.darkNavigation
+                      : KColors.lightNavigation,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -29,8 +29,8 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       backgroundColor: isDarkMode == true
-          ? KColors.darkBackgroundColor
-          : KColors.lightBackgroundColor,
+          ? KColors.darkBackground
+          : KColors.lightBackground,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -106,7 +106,9 @@ class _LoginPageState extends State<LoginPage> {
                           onLoginPressed();
                         },
                         style: FilledButton.styleFrom(
-                          backgroundColor: KColors.accentColor,
+                          backgroundColor: isDarkModeNotifier.value == true
+                              ? KColors.darkOrangeAccent
+                              : KColors.lightOrangeAccent,
                           minimumSize: Size(double.infinity, 24.0),
                         ),
                         child: Padding(

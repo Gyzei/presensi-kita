@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            textTheme: TextTheme(labelMedium: TextStyle(fontSize: 12.0)),
+            textTheme: TextTheme(labelMedium: KTextStyle.light12w500),
             fontFamily: 'Monstserrat', // font
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.white,

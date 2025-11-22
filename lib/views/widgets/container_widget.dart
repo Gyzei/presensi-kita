@@ -22,10 +22,10 @@ class ContainerWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: KTextStyle.titleTealText),
-                Text(desc, style: KTextStyle.descriptionText),
-                Text(desc, style: KTextStyle.descriptionText),
-                Text(desc, style: KTextStyle.descriptionText),
+                Text(title, style: KTextStyle.light14w700),
+                Text(desc, style: KTextStyle.light12w400),
+                Text(desc, style: KTextStyle.light12w400),
+                Text(desc, style: KTextStyle.light12w400),
               ],
             ),
           ),

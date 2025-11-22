@@ -16,66 +16,62 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             ProfileWidget(),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 2.0),
-              child: ValueListenableBuilder(
-                valueListenable: isDarkModeNotifier,
-                builder: (context, isDarkMode, child) {
-                  return Card(
-                    color: isDarkMode == true
-                        ? KColors.darkNavigationColor
-                        : KColors.lightNavigationColor,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 8.0,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ListTile(
-                            title: Text(
-                              'Pengaturan',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            leading: Icon(Icons.settings),
-                            contentPadding: EdgeInsets.all(0),
-                            minVerticalPadding: 0,
-                            dense: true,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return SettingsPage(title: 'Settings');
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              'Tentang',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            leading: Icon(Icons.info),
-                            contentPadding: EdgeInsets.all(0),
-                            minVerticalPadding: 0,
-                            dense: true,
-                          ),
-                        ],
-                      ),
+            ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Card(
+                  color: isDarkMode == true
+                      ? KColors.darkNavigation
+                      : KColors.lightNavigation,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 8.0,
                     ),
-                  );
-                },
-              ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Pengaturan',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          leading: Icon(Icons.settings),
+                          contentPadding: EdgeInsets.all(0),
+                          minVerticalPadding: 0,
+                          dense: true,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return SettingsPage(title: 'Settings');
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: Text(
+                            'Tentang',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          leading: Icon(Icons.info),
+                          contentPadding: EdgeInsets.all(0),
+                          minVerticalPadding: 0,
+                          dense: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
             SizedBox(height: 8),
             Card(

@@ -17,7 +17,7 @@ class OnboardingPage extends StatelessWidget {
               children: [
                 Text(
                   'Lorem ipsum dolor si amet',
-                  style: KTextStyle.descriptionText,
+                  style: KTextStyle.light12w400,
                   textAlign: TextAlign.justify,
                 ),
                 FilledButton(

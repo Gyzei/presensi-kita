@@ -17,8 +17,8 @@ class WidgetTree extends StatelessWidget {
     bool isDarkMode = isDarkModeNotifier.value;
     return Scaffold(
       backgroundColor: isDarkMode == true
-          ? KColors.darkBackgroundColor
-          : KColors.lightBackgroundColor,
+          ? KColors.darkBackground
+          : KColors.lightBackground,
       endDrawer: ValueListenableBuilder(
         valueListenable: selectedPageNotifier,
         builder: (context, selectedPage, child) {
@@ -37,19 +37,13 @@ class WidgetTree extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            'Notifications',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          Text('Notifications', style: KTextStyle.light18w700),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Lorem ipsum', style: TextStyle(fontSize: 18)),
+                          Text('Lorem ipsum', style: KTextStyle.light18w500),
                         ],
                       ),
                     ],
@@ -67,26 +61,26 @@ class WidgetTree extends StatelessWidget {
           valueListenable: selectedPageNotifier,
           builder: (context, selectedPage, child) {
             if (selectedPage == 0) {
-              return Text('Home', style: KTextStyle.appBarTitle);
+              return Text('Home', style: KTextStyle.light20w500);
             }
             if (selectedPage == 1) {
-              return Text('Survey', style: KTextStyle.appBarTitle);
+              return Text('Survey', style: KTextStyle.light20w500);
             }
             if (selectedPage == 2) {
-              return Text('Profile', style: KTextStyle.appBarTitle);
+              return Text('Profile', style: KTextStyle.light20w500);
             } else {
-              return Text('Error', style: KTextStyle.appBarTitle);
+              return Text('Error', style: KTextStyle.light20w500);
             }
           },
         ),
         elevation: 1,
         surfaceTintColor: isDarkMode == true
-            ? KColors.darkNavigationColor
-            : KColors.lightNavigationColor,
+            ? KColors.darkNavigation
+            : KColors.lightNavigation,
         backgroundColor: isDarkMode == true
-            ? KColors.darkNavigationColor
-            : KColors.lightNavigationColor,
-        shadowColor: const Color.fromARGB(64, 158, 158, 158),
+            ? KColors.darkNavigation
+            : KColors.lightNavigation,
+        shadowColor: KColors.shadow,
         actions: [
           ValueListenableBuilder(
             valueListenable: selectedPageNotifier,
