@@ -7,24 +7,24 @@ class MKWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = isDarkModeNotifier.value;
-    return GestureDetector(
-      onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Nothing happened :('),
-            behavior: SnackBarBehavior.floating,
-            duration: Duration(seconds: 1),
-          ),
-        );
-      },
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 2.0),
-        child: Card(
-          color: isDarkMode == true
-              ? KColors.darkNavigationColor
-              : KColors.lightNavigationColor,
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 2.0),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        color: isDarkModeNotifier.value == true
+            ? KColors.darkNavigationColor
+            : KColors.lightNavigationColor,
+        child: InkWell(
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Nothing happened :('),
+                behavior: SnackBarBehavior.floating,
+                duration: Duration(seconds: 1),
+              ),
+            );
+          },
           child: Padding(
             padding: EdgeInsets.all(12.0),
             child: Column(

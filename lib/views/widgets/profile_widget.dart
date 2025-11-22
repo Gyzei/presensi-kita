@@ -29,6 +29,24 @@ class ProfileWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(4.0),
+                              child: Container(
+                                color: Color.fromRGBO(108, 139, 8, 1),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 2.0,
+                                  horizontal: 8.0,
+                                ),
+                                child: Text(
+                                  'Level',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
                             Text(
                               'Username',
                               style: TextStyle(
@@ -75,7 +93,7 @@ class ProfileWidget extends StatelessWidget {
                             Expanded(child: Text('N/A', softWrap: true)),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 32),
                       ],
                     ),
                   ),

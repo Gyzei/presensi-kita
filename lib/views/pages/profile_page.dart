@@ -78,55 +78,50 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8),
-            GestureDetector(
-              onTap: () {
-                selectedPageNotifier.value = 0;
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginPage();
-                    },
-                  ),
-                );
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Container(
-                  color: Color.fromRGBO(139, 8, 8, 1),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+            Card(
+              clipBehavior: Clip.antiAlias,
+              color: Color.fromRGBO(139, 8, 8, 1),
+              child: InkWell(
+                onTap: () {
+                  selectedPageNotifier.value = 0;
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return LoginPage();
+                      },
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.logout_rounded,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                                SizedBox(width: 8.0),
-                                Text(
-                                  'Logout',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
+                          Icon(
+                            Icons.logout_rounded,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                          SizedBox(width: 8.0),
+                          Text(
+                            'Logout',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
+            SizedBox(height: 64),
           ],
         ),
       ),
