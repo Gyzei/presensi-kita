@@ -29,8 +29,8 @@ class KColors {
   static const Color lightNavigation = Color.fromRGBO(255, 255, 255, 1);
   static const Color darkNavigation = Color.fromRGBO(74, 74, 74, 1);
 
-  static const Color lightText = Color.fromRGBO(74, 74, 74, 1);
-  static const Color darkText = Color.fromRGBO(255, 255, 255, 1);
+  static const Color lightText = Color.fromRGBO(51, 51, 51, 1);
+  static const Color darkText = Colors.white;
 }
 
 class KConstants {
