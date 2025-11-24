@@ -20,7 +20,8 @@ class MKWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return DaftarPertemuanPage(title: 'Daftar Pertemuan');
+                // return DaftarPertemuanPage(namaMK: 'Matakuliah');
+                return DaftarPertemuanPage();
               },
             ),
           );
