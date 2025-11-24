@@ -39,17 +39,15 @@ class MKWidget extends StatelessWidget {
                       children: [
                         Text(
                           'Matakuliah',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark18w700
+                              : KTextStyle.light18w700,
                         ),
                         Text(
-                          'Nama Dosen',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
+                          'Nama',
+                          style: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark14w400
+                              : KTextStyle.light14w400,
                         ),
                       ],
                     ),
@@ -65,20 +63,14 @@ class MKWidget extends StatelessWidget {
                           horizontal: 8.0,
                           vertical: 4.0,
                         ),
-                        child: Text(
-                          'Kelas',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
-                        ),
+                        child: Text('Kelas', style: KTextStyle.dark18w700),
                       ),
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 32),
+
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -86,59 +78,70 @@ class MKWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ListTile(
-                          minTileHeight: 0,
-                          contentPadding: EdgeInsets.all(0),
-                          minLeadingWidth: 4,
-                          leading: Icon(Icons.schedule_rounded, size: 20),
-                          title: Text(
-                            'Hari / 00:00 - 00:00',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.schedule_rounded,
+                              size: 20,
+                              color: isDarkModeNotifier.value == true
+                                  ? KColors.darkText
+                                  : KColors.lightText,
                             ),
-                          ),
+                            SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                'Hari / 00:00 - 00:00',
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark12w400
+                                    : KTextStyle.light12w400,
+                              ),
+                            ),
+                          ],
                         ),
-                        ListTile(
-                          minTileHeight: 0,
-                          contentPadding: EdgeInsets.all(0),
-                          minLeadingWidth: 4,
-                          leading: Icon(
-                            Icons.door_front_door_rounded,
-                            size: 20,
-                          ),
-                          title: Text(
-                            'Ruang',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.door_front_door_rounded,
+                                size: 20,
+                                color: isDarkModeNotifier.value == true
+                                    ? KColors.darkText
+                                    : KColors.lightText,
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Ruang',
+                                  style: isDarkModeNotifier.value == true
+                                      ? KTextStyle.dark12w400
+                                      : KTextStyle.light12w400,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Container(
-                          color: isDarkModeNotifier.value == true
-                              ? KColors.darkOrangeAccent
-                              : KColors.lightOrangeAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 4.0,
-                            ),
-                            child: Text(
-                              'Status Kelas',
-                              style: KTextStyle.light12w400,
-                            ),
-                          ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Container(
+                      color: isDarkModeNotifier.value == true
+                          ? KColors.darkOrangeAccent
+                          : KColors.lightOrangeAccent,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 4.0,
+                        ),
+                        child: Wrap(
+                          children: [
+                            Text('Status Kelas', style: KTextStyle.dark16w500),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),

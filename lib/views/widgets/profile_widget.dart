@@ -32,33 +32,45 @@ class ProfileWidget extends StatelessWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(4.0),
                               child: Container(
-                                color: Color.fromRGBO(108, 139, 8, 1),
+                                color: isDarkModeNotifier.value == true
+                                    ? KColors.darkGreen
+                                    : KColors.lightGreen,
                                 padding: EdgeInsets.symmetric(
                                   vertical: 2.0,
                                   horizontal: 8.0,
                                 ),
                                 child: Text(
                                   'Level',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: KTextStyle.dark12w600,
                                 ),
                               ),
                             ),
                             Text(
                               'Username',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                              ),
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark24w700
+                                  : KTextStyle.light24w700,
                             ),
                             Row(
                               children: [
-                                Text('202XXXXXXXXX'),
-                                Text(' • '),
-                                Text('Kelas'),
+                                Text(
+                                  '202XXXXXXXXX',
+                                  style: isDarkModeNotifier.value == true
+                                      ? KTextStyle.dark12w400
+                                      : KTextStyle.light12w400,
+                                ),
+                                Text(
+                                  ' • ',
+                                  style: isDarkModeNotifier.value == true
+                                      ? KTextStyle.dark12w400
+                                      : KTextStyle.light12w400,
+                                ),
+                                Text(
+                                  'Kelas',
+                                  style: isDarkModeNotifier.value == true
+                                      ? KTextStyle.dark12w400
+                                      : KTextStyle.light12w400,
+                                ),
                               ],
                             ),
                           ],
@@ -67,12 +79,28 @@ class ProfileWidget extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(width: 64, child: Text('Email')),
-                            Text(' : '),
+                            SizedBox(
+                              width: 64,
+                              child: Text(
+                                'Email',
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark14w400
+                                    : KTextStyle.light14w400,
+                              ),
+                            ),
+                            Text(
+                              ' : ',
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark14w400
+                                  : KTextStyle.light14w400,
+                            ),
                             Expanded(
                               child: Text(
                                 'user@example.pnl.ac.id',
                                 softWrap: true,
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark14w400
+                                    : KTextStyle.light14w400,
                               ),
                             ),
                           ],
@@ -80,17 +108,59 @@ class ProfileWidget extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(width: 64, child: Text('Program Studi')),
-                            Text(' : '),
-                            Expanded(child: Text('N/A', softWrap: true)),
+                            SizedBox(
+                              width: 64,
+                              child: Text(
+                                'Program Studi',
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark14w400
+                                    : KTextStyle.light14w400,
+                              ),
+                            ),
+                            Text(
+                              ' : ',
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark14w400
+                                  : KTextStyle.light14w400,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'N/A',
+                                softWrap: true,
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark14w400
+                                    : KTextStyle.light14w400,
+                              ),
+                            ),
                           ],
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(width: 64, child: Text('Jurusan')),
-                            Text(' : '),
-                            Expanded(child: Text('N/A', softWrap: true)),
+                            SizedBox(
+                              width: 64,
+                              child: Text(
+                                'Jurusan',
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark14w400
+                                    : KTextStyle.light14w400,
+                              ),
+                            ),
+                            Text(
+                              ' : ',
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark14w400
+                                  : KTextStyle.light14w400,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'N/A',
+                                softWrap: true,
+                                style: isDarkModeNotifier.value == true
+                                    ? KTextStyle.dark14w400
+                                    : KTextStyle.light14w400,
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(height: 32),
@@ -114,7 +184,9 @@ class ProfileWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
                     radius: 60.0,
-                    backgroundColor: Colors.white,
+                    backgroundColor: isDarkModeNotifier.value == true
+                        ? KColors.darkNavigation
+                        : KColors.lightNavigation,
                     foregroundImage: AssetImage(
                       'assets/images/background.jpeg',
                     ),

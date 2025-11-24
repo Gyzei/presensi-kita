@@ -25,24 +25,14 @@ class ProfilePage extends StatelessWidget {
                       : KColors.lightNavigation,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 16.0,
+                      horizontal: 8.0,
                       vertical: 8.0,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ListTile(
-                          title: Text(
-                            'Pengaturan',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          leading: Icon(Icons.settings),
-                          contentPadding: EdgeInsets.all(0),
-                          minVerticalPadding: 0,
-                          dense: true,
+                        InkWell(
+                          borderRadius: BorderRadius.circular(8.0),
                           onTap: () {
                             Navigator.push(
                               context,
@@ -53,19 +43,66 @@ class ProfilePage extends StatelessWidget {
                               ),
                             );
                           },
-                        ),
-                        ListTile(
-                          title: Text(
-                            'Tentang',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0,
+                                  horizontal: 8.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.settings,
+                                      color: isDarkModeNotifier.value == true
+                                          ? KColors.darkText
+                                          : KColors.lightText,
+                                    ),
+                                    SizedBox(width: 8),
+                                    Text(
+                                      'Pengaturan',
+                                      style: isDarkModeNotifier.value == true
+                                          ? KTextStyle.dark16w500
+                                          : KTextStyle.light16w500,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                          leading: Icon(Icons.info),
-                          contentPadding: EdgeInsets.all(0),
-                          minVerticalPadding: 0,
-                          dense: true,
+                        ),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(8.0),
+                          onTap: () {
+                            print('debug');
+                          },
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0,
+                                  horizontal: 8.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.info,
+                                      color: isDarkModeNotifier.value == true
+                                          ? KColors.darkText
+                                          : KColors.lightText,
+                                    ),
+                                    SizedBox(width: 8),
+                                    Text(
+                                      'Tentang',
+                                      style: isDarkModeNotifier.value == true
+                                          ? KTextStyle.dark16w500
+                                          : KTextStyle.light16w500,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -74,50 +111,49 @@ class ProfilePage extends StatelessWidget {
               },
             ),
             SizedBox(height: 8),
-            Card(
-              clipBehavior: Clip.antiAlias,
-              color: Color.fromRGBO(139, 8, 8, 1),
-              child: InkWell(
-                onTap: () {
-                  selectedPageNotifier.value = 0;
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginPage();
-                      },
-                    ),
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.logout_rounded,
-                            color: Colors.white,
-                            size: 16,
+            ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Card(
+                  clipBehavior: Clip.antiAlias,
+                  color: isDarkMode == true
+                      ? KColors.darkRedAccent
+                      : KColors.lightRedAccent,
+                  child: InkWell(
+                    onTap: () {
+                      selectedPageNotifier.value = 0;
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginPage();
+                          },
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.logout_rounded,
+                                color: KColors.darkText,
+                                size: 16,
+                              ),
+                              SizedBox(width: 8.0),
+                              Text('Logout', style: KTextStyle.dark16w700),
+                            ],
                           ),
-                          SizedBox(width: 8.0),
-                          Text(
-                            'Logout',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
-            SizedBox(height: 64),
           ],
         ),
       ),

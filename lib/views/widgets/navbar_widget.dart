@@ -7,7 +7,6 @@ class NavbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = isDarkModeNotifier.value;
     return ValueListenableBuilder(
       valueListenable: selectedPageNotifier,
       builder: (context, selectedPage, child) {
@@ -18,10 +17,10 @@ class NavbarWidget extends StatelessWidget {
           shadowColor: KColors.shadow,
           indicatorColor: Colors.transparent,
           overlayColor: WidgetStateColor.transparent,
-          backgroundColor: isDarkMode == true
+          backgroundColor: isDarkModeNotifier.value == true
               ? KColors.darkNavigation
               : KColors.lightNavigation,
-          surfaceTintColor: isDarkMode == true
+          surfaceTintColor: isDarkModeNotifier.value == true
               ? KColors.darkNavigation
               : KColors.lightNavigation,
           destinations: [
@@ -33,6 +32,10 @@ class NavbarWidget extends StatelessWidget {
                     ? KColors.darkOrangeAccent
                     : selectedPage == 0 && isDarkModeNotifier.value == false
                     ? KColors.lightOrangeAccent
+                    : selectedPage != 0 && isDarkModeNotifier.value == true
+                    ? KColors.darkText
+                    : selectedPage != 0 && isDarkModeNotifier.value == false
+                    ? KColors.lightText
                     : null,
               ),
               label: 'Home',
@@ -47,6 +50,10 @@ class NavbarWidget extends StatelessWidget {
                     ? KColors.darkOrangeAccent
                     : selectedPage == 1 && isDarkModeNotifier.value == false
                     ? KColors.lightOrangeAccent
+                    : selectedPage != 1 && isDarkModeNotifier.value == true
+                    ? KColors.darkText
+                    : selectedPage != 1 && isDarkModeNotifier.value == false
+                    ? KColors.lightText
                     : null,
               ),
               label: 'Survey',
@@ -59,6 +66,10 @@ class NavbarWidget extends StatelessWidget {
                     ? KColors.darkOrangeAccent
                     : selectedPage == 2 && isDarkModeNotifier.value == false
                     ? KColors.lightOrangeAccent
+                    : selectedPage != 2 && isDarkModeNotifier.value == true
+                    ? KColors.darkText
+                    : selectedPage != 2 && isDarkModeNotifier.value == false
+                    ? KColors.lightText
                     : null,
               ),
               label: 'Profile',

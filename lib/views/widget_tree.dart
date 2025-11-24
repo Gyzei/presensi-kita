@@ -14,9 +14,8 @@ class WidgetTree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = isDarkModeNotifier.value;
     return Scaffold(
-      backgroundColor: isDarkMode == true
+      backgroundColor: isDarkModeNotifier.value == true
           ? KColors.darkBackground
           : KColors.lightBackground,
       endDrawer: ValueListenableBuilder(
@@ -24,9 +23,9 @@ class WidgetTree extends StatelessWidget {
         builder: (context, selectedPage, child) {
           if (selectedPage == 0) {
             return Drawer(
-              backgroundColor: isDarkMode == true
-                  ? Colors.grey[850]
-                  : Colors.white,
+              backgroundColor: isDarkModeNotifier.value == true
+                  ? KColors.darkNavigation
+                  : KColors.lightNavigation,
               child: SafeArea(
                 child: Padding(
                   padding: EdgeInsetsGeometry.fromLTRB(16, 32, 16, 8),
@@ -60,24 +59,25 @@ class WidgetTree extends StatelessWidget {
         title: ValueListenableBuilder(
           valueListenable: selectedPageNotifier,
           builder: (context, selectedPage, child) {
-            if (selectedPage == 0) {
-              return Text('Home', style: KTextStyle.light20w500);
-            }
-            if (selectedPage == 1) {
-              return Text('Survey', style: KTextStyle.light20w500);
-            }
-            if (selectedPage == 2) {
-              return Text('Profile', style: KTextStyle.light20w500);
-            } else {
-              return Text('Error', style: KTextStyle.light20w500);
-            }
+            return Text(
+              selectedPage == 0
+                  ? 'Home'
+                  : selectedPage == 1
+                  ? 'Survey'
+                  : selectedPage == 2
+                  ? 'Profile'
+                  : 'Error',
+              style: isDarkModeNotifier.value == true
+                  ? KTextStyle.dark20w500
+                  : KTextStyle.light20w500,
+            );
           },
         ),
         elevation: 1,
-        surfaceTintColor: isDarkMode == true
+        surfaceTintColor: isDarkModeNotifier.value == true
             ? KColors.darkNavigation
             : KColors.lightNavigation,
-        backgroundColor: isDarkMode == true
+        backgroundColor: isDarkModeNotifier.value == true
             ? KColors.darkNavigation
             : KColors.lightNavigation,
         shadowColor: KColors.shadow,
@@ -87,6 +87,9 @@ class WidgetTree extends StatelessWidget {
             builder: (context, selectedPage, child) {
               if (selectedPage == 0) {
                 return IconButton(
+                  color: isDarkModeNotifier.value == true
+                      ? KColors.darkText
+                      : KColors.lightText,
                   icon: Icon(Icons.notifications),
                   onPressed: () {
                     Scaffold.of(context).openEndDrawer();

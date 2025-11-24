@@ -36,17 +36,15 @@ class SurveyWidget extends StatelessWidget {
                     children: [
                       Text(
                         'Survey Title',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        style: isDarkModeNotifier.value == true
+                            ? KTextStyle.dark18w700
+                            : KTextStyle.light18w700,
                       ),
                       Text(
                         'Subtittle',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        style: isDarkModeNotifier.value == true
+                            ? KTextStyle.dark14w400
+                            : KTextStyle.light14w400,
                       ),
                     ],
                   ),
@@ -64,24 +62,21 @@ class SurveyWidget extends StatelessWidget {
                           children: [
                             Text(
                               'Tanggal dimulai',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark12w400
+                                  : KTextStyle.light12w400,
                             ),
                             Text(
                               ' - ',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark12w400
+                                  : KTextStyle.light12w400,
                             ),
                             Text(
                               'Tanggal Selesai',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark12w400
+                                  : KTextStyle.light12w400,
                             ),
                           ],
                         ),
@@ -103,11 +98,7 @@ class SurveyWidget extends StatelessWidget {
                             ),
                             child: Text(
                               'Status Survey',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                              style: KTextStyle.dark16w500,
                             ),
                           ),
                         ),

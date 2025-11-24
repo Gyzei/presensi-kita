@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
+import 'package:presensi_kita/data/notifiers.dart';
 
 class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({super.key});
@@ -15,15 +17,21 @@ class WelcomeWidget extends StatelessWidget {
               children: [
                 Text(
                   'Selamat Pagi !!',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                  style: isDarkModeNotifier.value == true
+                      ? KTextStyle.dark24w500
+                      : KTextStyle.light24w500,
                 ),
                 Text(
                   'User',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                  style: isDarkModeNotifier.value == true
+                      ? KTextStyle.dark24w500
+                      : KTextStyle.light24w500,
                 ),
                 Text(
                   '202XXXXXXXXX',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: isDarkModeNotifier.value == true
+                      ? KTextStyle.dark14w500
+                      : KTextStyle.light14w500,
                 ),
               ],
             ),
