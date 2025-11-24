@@ -1,180 +1,240 @@
 import 'package:flutter/material.dart';
+import 'package:presensi_kita/data/constants.dart';
+import 'package:presensi_kita/data/notifiers.dart';
 
 class DaftarPertemuanPage extends StatelessWidget {
   const DaftarPertemuanPage({super.key});
 
-  // Fungsi untuk mendapatkan warna berdasarkan status
   Color _getStatusColor(String status) {
     switch (status) {
       case 'Hadir':
-        return Colors.green[400]!;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkGreen
+            : KColors.lightGreen;
       case 'Sakit':
-        return Colors.blue[400]!;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkBlue
+            : KColors.lightBlue;
       case 'Izin':
-        return Colors.yellow[600]!;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkYellow
+            : KColors.lightYellow;
       case 'Terlambat':
-        return Colors.red[300]!;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkOrange
+            : KColors.lightOrange;
       case 'Tidak Hadir':
-        return Colors.red[600]!;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkRed
+            : KColors.lightRed;
       case 'Libur':
-        return Colors.grey[300]!;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkGrey
+            : KColors.lightGrey;
       default:
-        return Colors.white;
+        return isDarkModeNotifier.value == true
+            ? KColors.darkNavigation
+            : KColors.lightNavigation;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // Data hanya berisi status, nomor digenerate otomatis dari 01-16
-    final statusList = [
+    final List<String> statusList = [
       'Hadir',
       'Sakit',
       'Izin',
       'Terlambat',
       'Tidak Hadir',
       'Libur',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
     ];
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: isDarkModeNotifier.value == true
+          ? KColors.darkBackground
+          : KColors.lightBackground,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.5,
+        elevation: 1,
+        surfaceTintColor: isDarkModeNotifier.value == true
+            ? KColors.darkNavigation
+            : KColors.lightNavigation,
+        backgroundColor: isDarkModeNotifier.value == true
+            ? KColors.darkNavigation
+            : KColors.lightNavigation,
+        shadowColor: KColors.shadow,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black87),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Daftar Pertemuan',
-          style: TextStyle(
-            color: Colors.black87,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
+          icon: Icon(
+            Icons.arrow_back,
+            color: isDarkModeNotifier.value == true
+                ? KColors.darkText
+                : KColors.lightText,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          'Daftar Pertemuan',
+          style: isDarkModeNotifier.value == true
+              ? KTextStyle.dark20w500
+              : KTextStyle.light20w500,
         ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Title Section
-              const Text(
+              Text(
                 'Kehadiran Anda:',
-                style: TextStyle(color: Colors.grey, fontSize: 14),
+                style: isDarkModeNotifier.value == true
+                    ? KTextStyle.dark20w400
+                    : KTextStyle.light20w400,
               ),
-              const SizedBox(height: 4),
-              const Text(
+              SizedBox(height: 4),
+              Text(
                 'Praktik Produksi Pasca Animasi',
-                style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: isDarkModeNotifier.value == true
+                    ? KTextStyle.dark16w700
+                    : KTextStyle.light16w700,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
 
-              // Attendance Grid
               Expanded(
                 child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  clipBehavior: Clip.antiAlias,
+                  padding: EdgeInsets.symmetric(vertical: 4),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 2.5,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
+                    childAspectRatio: 2.8,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
                   ),
                   itemCount: 16,
                   itemBuilder: (context, index) {
-                    final status = statusList[index];
+                    final status = index >= statusList.length
+                        ? ''
+                        : statusList[index];
                     final statusColor = _getStatusColor(status);
                     final number = (index + 1).toString().padLeft(2, '0');
 
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: statusColor,
-                        borderRadius: BorderRadius.circular(8),
-                        border: status.isEmpty
-                            ? Border.all(color: Colors.grey[300]!)
-                            : null,
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color.fromARGB(29, 0, 0, 0),
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                      child: Row(
-                        children: [
-                          Text(
-                            number,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          if (status.isNotEmpty) ...[
-                            const SizedBox(width: 8),
+                    return Card(
+                      margin: EdgeInsets.all(0),
+                      color: statusColor,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 12.0,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
                             Expanded(
-                              child: Text(
-                                status,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black87,
-                                ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    number,
+                                    style: isDarkModeNotifier.value == true
+                                        ? KTextStyle.dark20w700
+                                        : KTextStyle.light20w700,
+                                  ),
+                                  if (status.isNotEmpty) ...[
+                                    SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        status,
+                                        style: isDarkModeNotifier.value == true
+                                            ? KTextStyle.dark16w400
+                                            : KTextStyle.light16w400,
+                                      ),
+                                    ),
+                                  ],
+                                ],
                               ),
                             ),
                           ],
-                        ],
+                        ),
                       ),
                     );
                   },
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
 
               // Legend
-              Wrap(
-                spacing: 12,
-                runSpacing: 8,
-                children: [
-                  _buildLegendItem('Hadir', Colors.green[400]!),
-                  _buildLegendItem('Terlambat', Colors.red[300]!),
-                  _buildLegendItem('Tidak Hadir', Colors.red[600]!),
-                  _buildLegendItem('Sakit', Colors.blue[400]!),
-                  _buildLegendItem('Izin', Colors.yellow[600]!),
-                  _buildLegendItem('Libur', Colors.grey[300]!),
-                ],
-              ),
-              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Wrap(
+                        spacing: 18,
+                        runSpacing: 18,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        alignment: WrapAlignment.spaceBetween,
 
-              // Scan Button
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildLegendItem(
+                                'Hadir',
+                                _getStatusColor('Hadir'),
+                              ),
+                              SizedBox(height: 8),
+                              _buildLegendItem(
+                                'Libur',
+                                _getStatusColor('Libur'),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildLegendItem(
+                                'Terlambat',
+                                _getStatusColor('Terlambat'),
+                              ),
+                              SizedBox(height: 8),
+                              _buildLegendItem(
+                                'Tidak Hadir',
+                                _getStatusColor('Tidak Hadir'),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildLegendItem('Izin', _getStatusColor('Izin')),
+                              SizedBox(height: 8),
+                              _buildLegendItem(
+                                'Sakit',
+                                _getStatusColor('Sakit'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 16),
+
               SizedBox(
                 width: double.infinity,
-                height: 56,
+                height: 48,
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle scan action
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber[700],
+                    backgroundColor: isDarkModeNotifier.value == true
+                        ? KColors.darkOrangeAccent
+                        : KColors.lightOrangeAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -182,7 +242,7 @@ class DaftarPertemuanPage extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.qr_code_scanner, color: Colors.white),
                       SizedBox(width: 8),
                       Text(
@@ -216,10 +276,12 @@ class DaftarPertemuanPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
           ),
         ),
-        const SizedBox(width: 6),
+        SizedBox(width: 6),
         Text(
           label,
-          style: const TextStyle(fontSize: 12, color: Colors.black87),
+          style: isDarkModeNotifier.value == true
+              ? KTextStyle.dark12w400
+              : KTextStyle.light12w400,
         ),
       ],
     );
