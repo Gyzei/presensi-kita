@@ -15,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerPW = TextEditingController(text: '123');
   String confirmedUN = 'user';
   String confirmedPW = '123';
+  bool hidePassword = true;
 
   @override
   void dispose() {
@@ -25,16 +26,14 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = isDarkModeNotifier.value;
-
     return Scaffold(
-      backgroundColor: isDarkMode == true
+      backgroundColor: isDarkModeNotifier.value == true
           ? KColors.darkBackground
           : KColors.lightBackground,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(24.0),
             child: LayoutBuilder(
               builder: (context, BoxConstraints constraints) {
                 return FractionallySizedBox(
@@ -49,33 +48,50 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             Text(
                               'Selamat Datang Kembali',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              textAlign: TextAlign.center,
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark24w400
+                                  : KTextStyle.light24w400,
                             ),
                             Text(
                               'Masuk ke akun Anda',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: isDarkModeNotifier.value == true
+                                  ? KTextStyle.dark12w400
+                                  : KTextStyle.light12w400,
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 16.0),
                       TextField(
                         controller: controllerUN,
                         decoration: InputDecoration(
                           hintText: 'Username',
+                          hintStyle: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark14w400
+                              : KTextStyle.light14w400,
                           filled: true,
-                          fillColor: isDarkMode == true
-                              ? Colors.grey[850]
-                              : Colors.white,
-                          prefixIcon: Icon(Icons.person_rounded),
+                          counterStyle: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark14w400
+                              : KTextStyle.light14w400,
+                          fillColor: isDarkModeNotifier.value == true
+                              ? KColors.darkNavigation
+                              : KColors.lightNavigation,
+                          prefixIcon: Icon(Icons.person_rounded, size: 20),
+                          prefixIconColor: isDarkModeNotifier.value == true
+                              ? KColors.darkText
+                              : KColors.lightText,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: BorderSide(
+                              color: isDarkModeNotifier.value == true
+                                  ? KColors.darkOrangeAccent
+                                  : KColors.lightOrangeAccent,
+                            ),
+                          ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14.0),
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: BorderSide.none,
                           ),
                         ),
                         onEditingComplete: () {
@@ -85,45 +101,77 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 8.0),
                       TextField(
                         controller: controllerPW,
+                        obscureText: hidePassword,
                         decoration: InputDecoration(
                           hintText: 'Password',
+                          hintStyle: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark14w400
+                              : KTextStyle.light14w400,
                           filled: true,
-                          fillColor: isDarkMode == true
-                              ? Colors.grey[850]
-                              : Colors.white,
-                          prefixIcon: Icon(Icons.lock_rounded),
+                          fillColor: isDarkModeNotifier.value == true
+                              ? KColors.darkNavigation
+                              : KColors.lightNavigation,
+                          prefixIcon: Icon(Icons.lock_rounded, size: 20),
+                          prefixIconColor: isDarkModeNotifier.value == true
+                              ? KColors.darkText
+                              : KColors.lightText,
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              hidePassword == true
+                                  ? Icons.visibility_rounded
+                                  : Icons.visibility_off_rounded,
+                              color: isDarkModeNotifier.value == true
+                                  ? KColors.darkText
+                                  : KColors.lightText,
+                              size: 20,
+                            ),
+                            onPressed: () {
+                              hidePassword = !hidePassword;
+                              setState(() {});
+                            },
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: BorderSide(
+                              color: isDarkModeNotifier.value == true
+                                  ? KColors.darkOrangeAccent
+                                  : KColors.lightOrangeAccent,
+                            ),
+                          ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14.0),
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: BorderSide.none,
                           ),
                         ),
                         onEditingComplete: () {
                           setState(() {});
                         },
                       ),
-                      SizedBox(height: 20.0),
-                      FilledButton(
-                        onPressed: () {
-                          onLoginPressed();
-                        },
-                        style: FilledButton.styleFrom(
-                          backgroundColor: isDarkModeNotifier.value == true
-                              ? KColors.darkOrangeAccent
-                              : KColors.lightOrangeAccent,
-                          minimumSize: Size(double.infinity, 24.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Text(
-                            'LOGIN',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w700,
-                            ),
+                      SizedBox(height: 32.0),
+                      Card(
+                        clipBehavior: Clip.antiAlias,
+                        color: isDarkModeNotifier.value == true
+                            ? KColors.darkOrangeAccent
+                            : KColors.lightOrangeAccent,
+                        child: InkWell(
+                          onTap: () {
+                            onLoginPressed();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Login',
+                                  style: KTextStyle.dark24w700,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 64.0),
+                      // SizedBox(height: 64.0),
                     ],
                   ),
                 );
