@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/constants.dart';
+import 'package:presensi_kita/data/notifiers.dart';
 
 class ContainerWidget extends StatelessWidget {
   const ContainerWidget({super.key, required this.title, required this.desc});
@@ -9,18 +10,24 @@ class ContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 2.0),
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: KTextStyle.titleTealText),
-              Text(desc, style: KTextStyle.descriptionText),
-            ],
+    bool isDarkMode = isDarkModeNotifier.value;
+    return GestureDetector(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 2.0),
+        child: Card(
+          color: isDarkMode == true ? Colors.black : Colors.white,
+          child: Padding(
+            padding: EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: KTextStyle.light14w700),
+                Text(desc, style: KTextStyle.light12w400),
+                Text(desc, style: KTextStyle.light12w400),
+                Text(desc, style: KTextStyle.light12w400),
+              ],
+            ),
           ),
         ),
       ),

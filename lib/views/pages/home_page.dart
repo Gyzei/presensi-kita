@@ -1,34 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:presensi_kita/data/constants.dart';
-import 'package:presensi_kita/views/pages/course_page.dart';
-import 'package:presensi_kita/views/widgets/container_widget.dart';
-import 'package:presensi_kita/views/widgets/hero_widget.dart';
+import 'package:presensi_kita/views/widgets/mk_filter_widget.dart';
+import 'package:presensi_kita/views/widgets/mk_widget.dart';
+import 'package:presensi_kita/views/widgets/welcome_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<String> list = [
-      KValue.keyConcepts,
-      KValue.cleanUI,
-      KValue.fixBugs,
-      KValue.basicLayout,
-    ];
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Column(
           children: [
-            SizedBox(height: 10.0),
-            HeroWidget(title: 'Home', nextPage: CoursePage()),
-            SizedBox(height: 10.0),
-            ...List.generate(list.length, (index) {
-              return ContainerWidget(
-                title: list.elementAt(index),
-                desc: 'Lorem ipsum dolor sit amet',
-              );
+            WelcomeWidget(),
+            MKFilterWidget(),
+            ...List.generate(4, (index) {
+              return MKWidget();
             }),
+            // HeroWidget(title: 'Home', nextPage: CoursePage()),
+            // ...List.generate(mklist2.length, (index) {
+            //   return ContainerWidget(
+            //     title: mklist.elementAt(index),
+            //     desc: 'Lorem ipsum dolor sit amet',
+            //   );
+            // }),
           ],
         ),
       ),

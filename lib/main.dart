@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
-import 'package:presensi_kita/views/pages/welcome_page.dart';
+import 'package:presensi_kita/views/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -36,12 +36,15 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            textTheme: TextTheme(labelMedium: KTextStyle.light12w500),
+            fontFamily: 'Monstserrat', // font
             colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.yellow,
+              seedColor: Colors.white,
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),
-          home: WelcomePage(),
+          home: LoginPage(),
+          // home: WelcomePage(),
         );
       },
     );

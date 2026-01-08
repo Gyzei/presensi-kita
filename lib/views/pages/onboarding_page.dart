@@ -17,7 +17,7 @@ class OnboardingPage extends StatelessWidget {
               children: [
                 Text(
                   'Lorem ipsum dolor si amet',
-                  style: KTextStyle.descriptionText,
+                  style: KTextStyle.light12w400,
                   textAlign: TextAlign.justify,
                 ),
                 FilledButton(
@@ -26,7 +26,8 @@ class OnboardingPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage(title: 'Login');
+                          // return LoginPage(title: 'Login');
+                          return LoginPage();
                         },
                       ),
                     );
