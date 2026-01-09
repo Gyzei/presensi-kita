@@ -40,13 +40,13 @@ class ProfileWidget extends StatelessWidget {
                                   horizontal: 8.0,
                                 ),
                                 child: Text(
-                                  'Level',
+                                  'Mahasiswa',
                                   style: KTextStyle.dark12w600,
                                 ),
                               ),
                             ),
                             Text(
-                              'Username',
+                              'Egy Alfarezi',
                               style: isDarkModeNotifier.value == true
                                   ? KTextStyle.dark24w700
                                   : KTextStyle.light24w700,
@@ -54,7 +54,7 @@ class ProfileWidget extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  '202XXXXXXXXX',
+                                  '2023583020006',
                                   style: isDarkModeNotifier.value == true
                                       ? KTextStyle.dark12w400
                                       : KTextStyle.light12w400,
@@ -66,7 +66,7 @@ class ProfileWidget extends StatelessWidget {
                                       : KTextStyle.light12w400,
                                 ),
                                 Text(
-                                  'Kelas',
+                                  '3C',
                                   style: isDarkModeNotifier.value == true
                                       ? KTextStyle.dark12w400
                                       : KTextStyle.light12w400,
@@ -96,7 +96,7 @@ class ProfileWidget extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                'user@example.pnl.ac.id',
+                                'egy_alfarezi006@student.pnl.ac.id',
                                 softWrap: true,
                                 style: isDarkModeNotifier.value == true
                                     ? KTextStyle.dark14w400
@@ -125,7 +125,7 @@ class ProfileWidget extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                'N/A',
+                                'Teknologi Rekayasa Multimedia',
                                 softWrap: true,
                                 style: isDarkModeNotifier.value == true
                                     ? KTextStyle.dark14w400
@@ -154,7 +154,7 @@ class ProfileWidget extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                'N/A',
+                                'Teknologi Informasi dan Komputer',
                                 softWrap: true,
                                 style: isDarkModeNotifier.value == true
                                     ? KTextStyle.dark14w400

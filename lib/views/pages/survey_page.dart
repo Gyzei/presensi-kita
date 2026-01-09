@@ -11,7 +11,7 @@ class SurveyPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Column(
           children: [
-            ...List.generate(4, (index) {
+            ...List.generate(1, (index) {
               return SurveyWidget();
             }),
           ],

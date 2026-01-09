@@ -17,7 +17,7 @@ class SurveyWidget extends StatelessWidget {
         onTap: () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Nothing happened :('),
+              content: Text('Survey sudah selesai'),
               behavior: SnackBarBehavior.floating,
               duration: Duration(seconds: 1),
             ),
@@ -29,28 +29,29 @@ class SurveyWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Survey Title',
-                        style: isDarkModeNotifier.value == true
-                            ? KTextStyle.dark18w700
-                            : KTextStyle.light18w700,
-                      ),
-                      Text(
-                        'Subtittle',
-                        style: isDarkModeNotifier.value == true
-                            ? KTextStyle.dark14w400
-                            : KTextStyle.light14w400,
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Survey Kepuasan Sarana dan Prasarana Tahun 2025',
+                          style: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark18w700
+                              : KTextStyle.light18w700,
+                        ),
+                        Text(
+                          'Tahun 2025',
+                          style: isDarkModeNotifier.value == true
+                              ? KTextStyle.dark14w400
+                              : KTextStyle.light14w400,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 12),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -61,7 +62,7 @@ class SurveyWidget extends StatelessWidget {
                         Wrap(
                           children: [
                             Text(
-                              'Tanggal dimulai',
+                              '14/11/2025',
                               style: isDarkModeNotifier.value == true
                                   ? KTextStyle.dark12w400
                                   : KTextStyle.light12w400,
@@ -73,7 +74,7 @@ class SurveyWidget extends StatelessWidget {
                                   : KTextStyle.light12w400,
                             ),
                             Text(
-                              'Tanggal Selesai',
+                              '30/11/2025',
                               style: isDarkModeNotifier.value == true
                                   ? KTextStyle.dark12w400
                                   : KTextStyle.light12w400,
@@ -89,15 +90,15 @@ class SurveyWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                         child: Container(
                           color: isDarkModeNotifier.value == true
-                              ? KColors.darkOrangeAccent
-                              : KColors.lightOrangeAccent,
+                              ? KColors.darkGreenAccent
+                              : KColors.lightGreenAccent,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16.0,
                               vertical: 4.0,
                             ),
                             child: Text(
-                              'Status Survey',
+                              'Selesai',
                               style: KTextStyle.dark16w500,
                             ),
                           ),

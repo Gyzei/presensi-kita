@@ -22,13 +22,13 @@ class WelcomeWidget extends StatelessWidget {
                       : KTextStyle.light24w500,
                 ),
                 Text(
-                  'User',
+                  'Egy Alfarezi',
                   style: isDarkModeNotifier.value == true
                       ? KTextStyle.dark24w500
                       : KTextStyle.light24w500,
                 ),
                 Text(
-                  '202XXXXXXXXX',
+                  '2023583020006',
                   style: isDarkModeNotifier.value == true
                       ? KTextStyle.dark14w500
                       : KTextStyle.light14w500,

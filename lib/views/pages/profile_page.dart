@@ -38,7 +38,7 @@ class ProfilePage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SettingsPage(title: 'Settings');
+                                  return SettingsPage();
                                 },
                               ),
                             );
@@ -61,39 +61,6 @@ class ProfilePage extends StatelessWidget {
                                     SizedBox(width: 8),
                                     Text(
                                       'Pengaturan',
-                                      style: isDarkModeNotifier.value == true
-                                          ? KTextStyle.dark16w500
-                                          : KTextStyle.light16w500,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        InkWell(
-                          borderRadius: BorderRadius.circular(8.0),
-                          onTap: () {
-                            print('debug');
-                          },
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 8.0,
-                                  horizontal: 8.0,
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.info,
-                                      color: isDarkModeNotifier.value == true
-                                          ? KColors.darkText
-                                          : KColors.lightText,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      'Tentang',
                                       style: isDarkModeNotifier.value == true
                                           ? KTextStyle.dark16w500
                                           : KTextStyle.light16w500,

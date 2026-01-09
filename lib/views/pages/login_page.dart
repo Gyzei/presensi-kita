@@ -11,9 +11,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController controllerUN = TextEditingController(text: 'user');
-  TextEditingController controllerPW = TextEditingController(text: '123');
-  String confirmedUN = 'user';
+  // TextEditingController controllerUN = TextEditingController(
+  //   text: '2023583020006',
+  // );
+  // TextEditingController controllerPW = TextEditingController(text: '123');
+
+  TextEditingController controllerUN = TextEditingController(text: '');
+  TextEditingController controllerPW = TextEditingController(text: '');
+
+  String confirmedUN = '2023583020006';
   String confirmedPW = '123';
   bool hidePassword = true;
 

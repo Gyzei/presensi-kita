@@ -4,7 +4,20 @@ import 'package:presensi_kita/data/notifiers.dart';
 import 'package:presensi_kita/views/pages/daftar_pertemuan_page.dart';
 
 class MKWidget extends StatelessWidget {
-  const MKWidget({super.key});
+  const MKWidget({
+    super.key,
+    required this.mataKuliah,
+    required this.namaDosen,
+    required this.hariMK,
+    required this.jadwalMK,
+    required this.ruangMK,
+  });
+
+  final String mataKuliah;
+  final String namaDosen;
+  final String hariMK;
+  final String jadwalMK;
+  final String ruangMK;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +33,7 @@ class MKWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                // return DaftarPertemuanPage(namaMK: 'Matakuliah');
-                return DaftarPertemuanPage();
+                return DaftarPertemuanPage(mataKuliah: mataKuliah);
               },
             ),
           );
@@ -39,13 +51,13 @@ class MKWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Matakuliah',
+                          mataKuliah,
                           style: isDarkModeNotifier.value == true
                               ? KTextStyle.dark18w700
                               : KTextStyle.light18w700,
                         ),
                         Text(
-                          'Nama',
+                          namaDosen,
                           style: isDarkModeNotifier.value == true
                               ? KTextStyle.dark14w400
                               : KTextStyle.light14w400,
@@ -53,6 +65,7 @@ class MKWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(width: 16),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Container(
@@ -64,13 +77,13 @@ class MKWidget extends StatelessWidget {
                           horizontal: 8.0,
                           vertical: 4.0,
                         ),
-                        child: Text('Kelas', style: KTextStyle.dark18w700),
+                        child: Text('3C', style: KTextStyle.dark18w700),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 16),
 
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -91,7 +104,7 @@ class MKWidget extends StatelessWidget {
                             SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                'Hari / 00:00 - 00:00',
+                                '$hariMK / $jadwalMK',
                                 style: isDarkModeNotifier.value == true
                                     ? KTextStyle.dark12w400
                                     : KTextStyle.light12w400,
@@ -113,7 +126,7 @@ class MKWidget extends StatelessWidget {
                               SizedBox(width: 8),
                               Expanded(
                                 child: Text(
-                                  'Ruang',
+                                  'Ruang $ruangMK',
                                   style: isDarkModeNotifier.value == true
                                       ? KTextStyle.dark12w400
                                       : KTextStyle.light12w400,
@@ -123,25 +136,6 @@ class MKWidget extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Container(
-                      color: isDarkModeNotifier.value == true
-                          ? KColors.darkOrangeAccent
-                          : KColors.lightOrangeAccent,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 4.0,
-                        ),
-                        child: Wrap(
-                          children: [
-                            Text('Status Kelas', style: KTextStyle.dark16w500),
-                          ],
-                        ),
-                      ),
                     ),
                   ),
                 ],

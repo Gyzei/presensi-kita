@@ -3,7 +3,9 @@ import 'package:presensi_kita/data/constants.dart';
 import 'package:presensi_kita/data/notifiers.dart';
 
 class DaftarPertemuanPage extends StatelessWidget {
-  const DaftarPertemuanPage({super.key});
+  const DaftarPertemuanPage({super.key, required this.mataKuliah});
+
+  final String mataKuliah;
 
   Color _getStatusColor(String status) {
     switch (status) {
@@ -95,7 +97,7 @@ class DaftarPertemuanPage extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Praktik Produksi Pasca Animasi',
+                mataKuliah,
                 style: isDarkModeNotifier.value == true
                     ? KTextStyle.dark16w700
                     : KTextStyle.light16w700,
