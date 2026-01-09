@@ -187,9 +187,7 @@ class ProfileWidget extends StatelessWidget {
                     backgroundColor: isDarkModeNotifier.value == true
                         ? KColors.darkNavigation
                         : KColors.lightNavigation,
-                    foregroundImage: AssetImage(
-                      'assets/images/background.jpeg',
-                    ),
+                    foregroundImage: AssetImage('assets/images/profile.jpg'),
                   ),
                 ),
               ),
